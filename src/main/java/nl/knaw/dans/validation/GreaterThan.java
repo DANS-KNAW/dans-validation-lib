@@ -28,13 +28,13 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = GreaterThanValidator.class)
 @Documented
 public  @interface GreaterThan {
-    String message() default "{field1} must be larger than {field2}";
+    String message() default "{greater} must be larger than {smaller}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    String field1();
+    String greater();
 
-    String field2();
+    String smaller();
 }

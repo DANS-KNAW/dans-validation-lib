@@ -25,8 +25,8 @@ public class GreaterThanValidator implements ConstraintValidator<GreaterThan, Ob
 
     @Override
     public void initialize(GreaterThan constraintAnnotation) {
-        field1 = constraintAnnotation.field1();
-        field2 = constraintAnnotation.field2();
+        field1 = constraintAnnotation.greater();
+        field2 = constraintAnnotation.smaller();
     }
 
     @Override
@@ -36,6 +36,11 @@ public class GreaterThanValidator implements ConstraintValidator<GreaterThan, Ob
             Field field2Instance = object.getClass().getDeclaredField(field2);
             field1Instance.setAccessible(true);
             field2Instance.setAccessible(true);
+
+            // Check if the fields are comparable
+            if (!Comparable.class.isAssignableFrom(field1Instance.getType()) || !Comparable.class.isAssignableFrom(field2Instance.getType())) {
+                throw new IllegalArgumentException("Fields must of a type that implements Comparable");
+            }
 
             Comparable field1Value = (Comparable) field1Instance.get(object);
             Comparable field2Value = (Comparable) field2Instance.get(object);

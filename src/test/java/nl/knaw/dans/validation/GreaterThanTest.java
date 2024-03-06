@@ -21,19 +21,28 @@ import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
+import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GreaterThanTest {
 
     @Value
-    @GreaterThan(field1 = "field1", field2 = "field2")
+    @GreaterThan(greater = "field1", smaller = "field2")
     private static class TestObject {
         DataSize field1;
         DataSize field2;
+    }
+
+    @Value
+    @GreaterThan(greater = "field1", smaller = "field2")
+    private static class NotComparable {
+        Object field1;
+        Object field2;
     }
 
     @Test
@@ -122,6 +131,18 @@ public class GreaterThanTest {
             Set<ConstraintViolation<TestObject>> violations = validator.validate(testObject);
 
             assertThat(violations).isEmpty();
+        }
+    }
+
+    @Test
+    public void testIsNotValidWhenFieldsAreNotComparable() {
+        var testObject = new NotComparable(new Object(), new Object());
+
+        try (ValidatorFactory factory = Validation.buildDefaultValidatorFactory()) {
+            Validator validator = factory.getValidator();
+            var exception = assertThrows(ValidationException.class, () -> validator.validate(testObject));
+            // Note that original exception is wrapped in a ValidationException
+            assertThat(exception.getCause().getMessage()).isEqualTo("Fields must of a type that implements Comparable");
         }
     }
 }
