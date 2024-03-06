@@ -1,9 +1,9 @@
 dans-java-utils
 ===============
 
-![Build Status](https://github.com/DANS-KNAW/dans-java-utils/actions/workflows/build.yml/badge.svg)
-[![codecov](https://codecov.io/gh/DANS-KNAW/dans-java-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/DANS-KNAW/dans-java-utils)
-![Site Status](https://github.com/DANS-KNAW/dans-java-utils/actions/workflows/docs.yml/badge.svg)
+![Build Status](https://github.com/DANS-KNAW/dans-validation-lib/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/DANS-KNAW/dans-validation-lib/branch/master/graph/badge.svg)](https://codecov.io/gh/DANS-KNAW/dans-validation-lib)
+![Site Status](https://github.com/DANS-KNAW/dans-validation-lib/actions/workflows/docs.yml/badge.svg)
 
 DANS JavaBeans Validators.
 
