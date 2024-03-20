@@ -22,18 +22,17 @@ import java.util.UUID;
 public class UrnUuidValidator implements ConstraintValidator<UrnUuid, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        try {
-            if (s != null) {
-                if (!s.startsWith("urn:uuid:")) {
-                    throw new IllegalArgumentException("Not a URN UUID: " + s);
-                }
-                UUID.fromString(s.substring("urn:uuid:".length())); // throws IllegalArgumentException if not a valid UUID
-                return true;
+        if (s != null) {
+            if (!s.startsWith("urn:uuid:")) {
+                return false;
             }
-            return false;
+            try {
+                UUID.fromString(s.substring("urn:uuid:".length()));
+            }
+            catch (IllegalArgumentException e) {
+                return false;
+            }
         }
-        catch (IllegalArgumentException e) {
-            return false;
-        }
+        return true; // If null is not allowed, this should be checked by the @NotNull annotation
     }
 }
