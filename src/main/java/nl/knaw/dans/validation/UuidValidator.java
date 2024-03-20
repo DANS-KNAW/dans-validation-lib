@@ -19,10 +19,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.UUID;
 
-// TODO: move to dans-java-utils
 public class UuidValidator implements ConstraintValidator<Uuid, String> {
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
+        if (value == null) {
+            return true;
+        }
         try {
             UUID.fromString(value);
             return true;
