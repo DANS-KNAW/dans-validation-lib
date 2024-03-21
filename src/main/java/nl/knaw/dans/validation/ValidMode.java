@@ -15,22 +15,22 @@
  */
 package nl.knaw.dans.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import java.util.UUID;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class UuidValidator implements ConstraintValidator<Uuid, String> {
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
-        try {
-            UUID.fromString(value);
-            return true;
-        }
-        catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
+@Documented
+@Constraint(validatedBy = ModeValidator.class)
+@Target({ ElementType.METHOD, ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ValidMode {
+    String message() default "Invalid mode; a mode must be a valid octal number or a valid Posix file permission string.";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

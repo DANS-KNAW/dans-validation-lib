@@ -15,24 +15,38 @@
  */
 package nl.knaw.dans.validation;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.UUID;
+import java.nio.file.attribute.PosixFilePermissions;
 
-public class UrnUuidValidator implements ConstraintValidator<UrnUuid, String> {
+@Slf4j
+public class ModeValidator implements ConstraintValidator<ValidMode, String> {
+
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if (s != null) {
-            if (!s.startsWith("urn:uuid:")) {
-                return false;
-            }
+    public void initialize(ValidMode constraintAnnotation) {
+    }
+
+    @Override
+    public boolean isValid(String mode, ConstraintValidatorContext context) {
+        if (mode == null) {
+            return true; // null is valid (not set means no change in mode
+        }
+        try {
+            log.debug("Validating mode: {}.", mode);
+            Integer.parseInt(mode, 8);
+            return true;
+        }
+        catch (NumberFormatException e) {
             try {
-                UUID.fromString(s.substring("urn:uuid:".length()));
+                PosixFilePermissions.fromString(mode);
+                return true;
             }
-            catch (IllegalArgumentException e) {
+            catch (IllegalArgumentException e1) {
+                log.error("Invalid mode: {}.", mode);
                 return false;
             }
         }
-        return true; // If null is not allowed, this should be checked by the @NotNull annotation
     }
 }

@@ -15,22 +15,13 @@
  */
 package nl.knaw.dans.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import java.util.UUID;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class UuidValidator implements ConstraintValidator<Uuid, String> {
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
-        try {
-            UUID.fromString(value);
-            return true;
-        }
-        catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
+@Target({ ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface UniqueAttributes {
+    UniqueAttribute[] value();
 }

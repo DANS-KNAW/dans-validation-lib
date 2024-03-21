@@ -15,22 +15,21 @@
  */
 package nl.knaw.dans.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import java.util.UUID;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import javax.validation.Constraint;
+import javax.validation.Payload;
 
-public class UuidValidator implements ConstraintValidator<Uuid, String> {
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
-        try {
-            UUID.fromString(value);
-            return true;
-        }
-        catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
+@Target({ ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = UniqueAttributeValidator.class)
+@Repeatable(UniqueAttributes.class)
+public @interface UniqueAttribute {
+    String message() default "attribute {attribute} must be unique in the list of objects";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+    String attribute();
 }
