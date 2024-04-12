@@ -22,11 +22,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = UrnUuidValidator.class)
-@Target({ ElementType.FIELD, ElementType.PARAMETER})
+@Constraint(validatedBy = { UrnUuidValidator.class, UrnUuidValidatorForUri.class })
+@Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UrnUuid {
     String message() default "Invalid urn:uuid";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }
