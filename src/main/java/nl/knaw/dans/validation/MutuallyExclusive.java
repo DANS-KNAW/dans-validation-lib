@@ -16,19 +16,22 @@
 package nl.knaw.dans.validation;
 
 import javax.validation.Constraint;
-import javax.validation.Payload;
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = { UrnUuidValidator.class, UrnUuidValidatorForUri.class })
-@Target({ ElementType.FIELD, ElementType.PARAMETER })
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UrnUuid {
-    String message() default "Invalid urn:uuid";
+@Constraint(validatedBy = MutuallyExclusiveValidator.class)
+@Documented
+public @interface MutuallyExclusive {
+    String message() default "The fields {fields} are mutually exclusive";
 
     Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+    Class<?>[] payload() default {};
+
+    String[] fields();
 }
