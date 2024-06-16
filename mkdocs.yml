@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-site_name: dans-java-utils
+site_name: dans-validation-lib
 theme:
   name: readthedocs
 
-repo_name: DANS-KNAW/dans-java-utils
-repo_url: https://github.com/DANS-KNAW/dans-java-utils
+repo_name: DANS-KNAW/dans-validation-lib
+repo_url: https://github.com/DANS-KNAW/dans-validation-lib
 
 nav:
   - Manual: index.md
