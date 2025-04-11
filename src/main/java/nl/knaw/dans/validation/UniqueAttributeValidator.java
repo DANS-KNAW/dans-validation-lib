@@ -25,6 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Validator for the {@link UniqueAttribute} annotation.
+ */
 @Slf4j
 public class UniqueAttributeValidator implements ConstraintValidator<UniqueAttribute, Object> {
     private String attribute;

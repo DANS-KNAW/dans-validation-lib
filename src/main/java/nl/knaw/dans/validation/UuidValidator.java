@@ -19,6 +19,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.UUID;
 
+/**
+ * Validator for the {@link Uuid} annotation for {@link String} objects.
+ */
 public class UuidValidator implements ConstraintValidator<Uuid, String> {
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

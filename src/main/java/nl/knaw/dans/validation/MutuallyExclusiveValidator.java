@@ -18,6 +18,9 @@ package nl.knaw.dans.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * Validator for {@link MutuallyExclusive} annotation.
+ */
 public class MutuallyExclusiveValidator implements ConstraintValidator<MutuallyExclusive, Object> {
     private String[] fields;
 

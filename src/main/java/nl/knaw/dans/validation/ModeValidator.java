@@ -21,6 +21,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.nio.file.attribute.PosixFilePermissions;
 
+/**
+ * Validator for {@link ValidMode} annotation.
+ */
 @Slf4j
 public class ModeValidator implements ConstraintValidator<ValidMode, String> {
 

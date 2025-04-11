@@ -22,6 +22,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Validates that the value of a field is a valid URN UUID.
+ */
 @Constraint(validatedBy = { UrnUuidValidator.class, UrnUuidValidatorForUri.class })
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)

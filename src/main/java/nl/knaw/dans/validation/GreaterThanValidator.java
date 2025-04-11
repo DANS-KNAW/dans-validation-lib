@@ -19,6 +19,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.lang.reflect.Field;
 
+/**
+ * Validator for the {@link GreaterThan} annotation.
+ */
 public class GreaterThanValidator implements ConstraintValidator<GreaterThan, Object> {
     private String field1;
     private String field2;

@@ -17,23 +17,23 @@ package nl.knaw.dans.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Validates that the value of a field is a valid Unix mode. Both octal and symbolic modes are supported.
+ *
  */
-@Documented
-@Constraint(validatedBy = ModeValidator.class)
-@Target({ ElementType.METHOD, ElementType.FIELD })
+@Constraint(validatedBy = { ExistingFileValidatorForString.class, ExistingFileValidatorForFile.class, ExistingFileValidatorForPath.class })
+@Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidMode {
-    String message() default "Invalid mode; a mode must be a valid octal number or a valid Posix file permission string.";
+public @interface ExistingFile {
+    String message() default "Invalid urn:uuid";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+    boolean isDirectory() default false;
 }

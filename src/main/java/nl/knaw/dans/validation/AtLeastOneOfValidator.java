@@ -18,6 +18,9 @@ package nl.knaw.dans.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * Validator for the {@link AtLeastOneOf} annotation.
+ */
 public class AtLeastOneOfValidator implements ConstraintValidator<AtLeastOneOf, Object> {
 
     private String[] fields;

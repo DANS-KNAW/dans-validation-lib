@@ -20,6 +20,9 @@ import javax.validation.ConstraintValidatorContext;
 import java.net.URI;
 import java.util.UUID;
 
+/**
+ * Validator for the {@link UrnUuid} annotation for {@link URI} objects.
+ */
 public class UrnUuidValidatorForUri implements ConstraintValidator<UrnUuid, URI> {
 
     @Override

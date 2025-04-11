@@ -16,26 +16,26 @@
 package nl.knaw.dans.validation;
 
 import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import java.util.UUID;
+import java.nio.file.Path;
 
 /**
- * Validator for the {@link UrnUuid} annotation for {@link String} objects.
+ * Validator for {@link ExistingFile} annotation for {@link Path} objects.
  */
-public class UrnUuidValidator implements ConstraintValidator<UrnUuid, String> {
+public class ExistingFileValidatorForPath implements ConstraintValidator<ExistingFile, Path> {
+    private ExistingFileValidatorForFile fileValidator;
+
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if (s != null) {
-            if (!s.startsWith("urn:uuid:")) {
-                return false;
-            }
-            try {
-                UUID.fromString(s.substring("urn:uuid:".length()));
-            }
-            catch (IllegalArgumentException e) {
-                return false;
-            }
+    public void initialize(ExistingFile constraintAnnotation) {
+        this.fileValidator = new ExistingFileValidatorForFile();
+        this.fileValidator.initialize(constraintAnnotation);
+    }
+
+    @Override
+    public boolean isValid(Path path, javax.validation.ConstraintValidatorContext context) {
+        if (path == null) {
+            // Use NotNullValidator for null check
+            return true;
         }
-        return true; // If null is not allowed, this should be checked by the @NotNull annotation
+        return fileValidator.isValid(path.toFile(), context);
     }
 }

@@ -17,6 +17,9 @@ package nl.knaw.dans.validation;
 
 import javax.validation.ConstraintValidator;
 
+/**
+ * Validator for {@link SwordToken} annotation.
+ */
 public class SwordTokenValidator implements ConstraintValidator<SwordToken, String> {
     private static final String PREFIX = "sword:";
 
