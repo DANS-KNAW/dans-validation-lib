@@ -22,9 +22,13 @@ repo_name: DANS-KNAW/dans-validation-lib
 repo_url: https://github.com/DANS-KNAW/dans-validation-lib
 
 nav:
-  - Manual: index.md
-  - JavaDocs: api.md
-  - ⇒ DANS Data Station Architecture: arch.md
+  - Manual:
+      - Description: index.md
+      - Getting started: getting-started.md
+      - JavaDocs: api.md
+      - Context: context.md
+  - Development:
+      - Overview: dev.md
 
 plugins:
   - markdownextradata

@@ -1,5 +1,5 @@
-API
-===
+JavaDocs
+========
 
 Open the [JavaDocs]{:target=_blank:} in a new tab.
 
