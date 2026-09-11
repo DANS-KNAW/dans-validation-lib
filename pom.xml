@@ -22,13 +22,13 @@
         <groupId>nl.datastations</groupId>
         <artifactId>dans-core-systems-parent</artifactId>
         <version>0.1.0</version>
-        <relativePath />
+        <relativePath/>
     </parent>
     <artifactId>dans-validation-lib</artifactId>
     <version>2.0.1-SNAPSHOT</version>
     <name>DANS JavaBeans Validators</name>
-    <inceptionYear>2024</inceptionYear>
     <url>https://dans-knaw.github.io/${project.artifactId}</url>
+    <inceptionYear>2024</inceptionYear>
     <scm>
         <connection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</connection>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
@@ -76,4 +76,3 @@
         </plugins>
     </build>
 </project>
-
