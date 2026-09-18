@@ -30,8 +30,8 @@
     <url>https://dans-knaw.github.io/${project.artifactId}</url>
     <inceptionYear>2024</inceptionYear>
     <scm>
-        <connection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</connection>
-        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
+        <connection>scm:git:https://github.com/DANS-KNAW/dans-validation-lib</connection>
+        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dans-validation-lib</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/DANS-KNAW/${project.artifactId}</url>
     </scm>
