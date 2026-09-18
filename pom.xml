@@ -33,7 +33,7 @@
         <connection>scm:git:https://github.com/DANS-KNAW/dans-validation-lib</connection>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dans-validation-lib</developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/DANS-KNAW/${project.artifactId}</url>
+        <url>https://github.com/DANS-KNAW/dans-validation-lib</url>
     </scm>
 
     <dependencies>
