@@ -25,14 +25,14 @@
         <relativePath />
     </parent>
     <artifactId>dans-validation-lib</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>2.0.3</version>
     <name>DANS JavaBeans Validators</name>
     <url>https://dans-knaw.github.io/${project.artifactId}</url>
     <inceptionYear>2024</inceptionYear>
     <scm>
         <connection>scm:git:https://github.com/DANS-KNAW/dans-validation-lib</connection>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dans-validation-lib</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v2.0.3</tag>
         <url>https://github.com/DANS-KNAW/dans-validation-lib</url>
     </scm>
 
